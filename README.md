@@ -12,7 +12,7 @@ An interactive multi-body gravitational simulation system developed with Python 
 ### 💥 Collision & Fragmentation System
 - **Smart Collision Detection**: Dual detection using geometric overlap
 - **Fragment Generation**: Creates fragments based on energy ratios during collisions
-- **Adjustable Parameters**: Roche coefficient, maximum fragment count, minimum mass, and more
+- **Adjustable Parameters**: merge factor, shatter factor, maximum fragment count, minimum mass, and more
 
 ### 🎮 Interactive Interface
 - **Visual Display**: Real-time visualization of celestial positions, velocities, and trajectories
@@ -58,3 +58,5 @@ python Nbody.py
 - **Algorithm Testing**: Reference for physics engine development
 
 This simulator presents complex gravitational interactions in an intuitive way, allowing users to explore various astronomical phenomena from simple binary systems to complex multi-body systems.
+
+Visit our [Homepage](https://zzcjas.github.io/Nbody/index.html) to get more information
