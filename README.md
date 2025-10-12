@@ -10,8 +10,8 @@ An interactive multi-body gravitational simulation system developed with Python 
 - **Real-time Parameter Adjustment**: Adjustable time steps, boundary size, and other simulation parameters
 
 ### 💥 Collision & Fragmentation System
-- **Smart Collision Detection**: Dual detection using geometric overlap and Roche limit criteria
-- **Fragment Generation**: Creates fragments based on mass ratios during collisions
+- **Smart Collision Detection**: Dual detection using geometric overlap
+- **Fragment Generation**: Creates fragments based on energy ratios during collisions
 - **Adjustable Parameters**: Roche coefficient, maximum fragment count, minimum mass, and more
 
 ### 🎮 Interactive Interface
