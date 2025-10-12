@@ -586,25 +586,6 @@ class NBodyApp:
         merge_factor = float(self.merge_factor.get())     # 合并阈值：KE_rel <= merge_factor * U
         shatter_factor = float(self.shatter_factor.get()) # 强裂阈值：KE_rel >= shatter_factor * U
 
-        # 先处理极小碎片的快速吸收（保留原逻辑）
-        if is_frag_small and m_small / m_big < 0.02:
-            vol_big = math.pi / 6.0 * (d_big ** 3)
-            vol_small = math.pi / 6.0 * (d_small ** 3)
-            combined_vol = vol_big + vol_small
-            if combined_vol > 0:
-                merged_d = max(0.05, (6.0 / math.pi * combined_vol) ** (1.0/3.0))
-            else:
-                merged_d = max(0.05, (total_mass ** (1.0/3.0)) * 0.6)
-
-            self.sim.pos[big_idx] = com_pos
-            self.sim.vel[big_idx] = com_vel
-            self.sim.mass[big_idx, 0] = total_mass
-            self.sim.diam[big_idx, 0] = merged_d
-            self.sim.is_frag[big_idx, 0] = is_frag_big
-            self.sim.delete_indices([small_idx])
-            self.sim.acc = self.sim.accelerations()
-            return
-
         # 基于能量的三段式判定
         if KE_rel <= merge_factor * U:
             # 吸收/合并
