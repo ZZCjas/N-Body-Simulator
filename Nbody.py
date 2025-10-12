@@ -616,13 +616,8 @@ class NBodyApp:
             return
 
         if KE_rel >= shatter_factor * U:
-            # 强烈粉碎：小体远小 → 粉碎小体；接近质量 → 整体粉碎
-            if m_small / total_mass < 0.35:
-                self._shred_small_into_fragments(big_idx, small_idx, p_big, v_big, m_big, d_big,
-                                                 p_small, v_small, m_small, d_small, com_vel, rel_speed)
-            else:
-                self._full_shatter_and_add(total_mass, com_pos, com_vel, rel_speed)
-                self.sim.delete_indices([big_idx, small_idx])
+            self._full_shatter_and_add(total_mass, com_pos, com_vel, rel_speed)
+            self.sim.delete_indices([big_idx, small_idx])
             self.sim.acc = self.sim.accelerations()
             return
 
@@ -636,7 +631,7 @@ class NBodyApp:
                                     p_small, v_small, m_small, d_small,
                                     com_vel, rel_speed):
         # 更节制的碎片分配：碎片数受限（<= small_frag_scale_limit）
-        n_frag = int(min(self.small_frag_scale_limit, max(2, round(m_small / 0.3))))  # 减小分母以增加碎片数
+        n_frag = int(min(self.small_frag_scale_limit, max(2, round(m_small / 0.2))))  # 减小分母以增加碎片数
         n_frag = max(2, min(n_frag, self.small_frag_scale_limit))
         weights = self.rng.random(n_frag)
         weights = np.maximum(weights, 1e-6)
