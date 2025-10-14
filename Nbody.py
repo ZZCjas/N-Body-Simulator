@@ -580,7 +580,7 @@ class NBodyApp:
         r1 = d_big / 2.0
         r2 = d_small / 2.0
         r_eff = max(sep, 0.5 * (r1 + r2), 1e-6)
-        U = G * m_big * m_small / r_eff  # 取正值表示“结合能规模”
+        U = 0.6 * G * (m_big + m_small) * (m_big + m_small) / r_eff  # 取正值表示“结合能规模”
 
         # UI 可调阈值
         merge_factor = float(self.merge_factor.get())     # 合并阈值：KE_rel <= merge_factor * U
